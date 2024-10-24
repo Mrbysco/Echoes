@@ -5,6 +5,7 @@ import com.mrbysco.echoes.EchoesMod;
 import com.mrbysco.echoes.entity.creeper.ai.CreeperAi;
 import com.mrbysco.echoes.entity.echo.ai.EchoAi;
 import com.mrbysco.echoes.registry.EchoRegistry;
+import com.mrbysco.echoes.registry.EchoTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
@@ -19,12 +20,15 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.Unit;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.behavior.BlockPosTracker;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
@@ -35,6 +39,7 @@ import net.minecraft.world.entity.monster.warden.AngerLevel;
 import net.minecraft.world.entity.monster.warden.AngerManagement;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.gameevent.DynamicGameEventListener;
 import net.minecraft.world.level.gameevent.EntityPositionSource;
@@ -452,5 +457,12 @@ public abstract class Echo extends Monster implements VibrationSystem {
 				echo.getBrain().eraseMemory(MemoryModuleType.WALK_TARGET);
 			}
 		}
+	}
+
+	public static boolean checkMobSpawnRules(
+			EntityType<? extends Mob> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random
+	) {
+		BlockPos blockpos = pos.below();
+		return level.getBlockState(pos.below()).is(EchoTags.ECHO_SPAWNABLE_ON) && (spawnType == MobSpawnType.SPAWNER || level.getBlockState(blockpos).isValidSpawn(level, blockpos, type));
 	}
 }

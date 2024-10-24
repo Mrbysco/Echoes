@@ -2,6 +2,7 @@ package com.mrbysco.echoes.registry;
 
 import com.mrbysco.echoes.EchoesMod;
 import com.mrbysco.echoes.entity.creeper.EchoCreeper;
+import com.mrbysco.echoes.entity.echo.Echo;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
@@ -29,7 +30,7 @@ public class EchoRegistry {
 
 	public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
 		event.register(ECHO_CREEPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-				EchoCreeper::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
+				Echo::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
 	}
 
 	public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
