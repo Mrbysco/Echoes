@@ -5,7 +5,6 @@ import com.mrbysco.echoes.entity.creeper.EchoCreeper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -30,7 +29,7 @@ public class EchoRegistry {
 
 	public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
 		event.register(ECHO_CREEPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-				Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
+				EchoCreeper::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
 	}
 
 	public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
