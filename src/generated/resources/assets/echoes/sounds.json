@@ -1,0 +1,29 @@
+{
+  "echo_attack_impact": {
+    "sounds": [
+      "mob/warden/attack_impact_1",
+      "mob/warden/attack_impact_2"
+    ],
+    "subtitle": "echoes.subtitle.echo_attack_impact"
+  },
+  "echo_heartbeat": {
+    "sounds": [
+      "mob/warden/heartbeat_1",
+      "mob/warden/heartbeat_2",
+      "mob/warden/heartbeat_3",
+      "mob/warden/heartbeat_4"
+    ],
+    "subtitle": "echoes.subtitle.echo_heartbeat"
+  },
+  "echo_tendril_clicks": {
+    "sounds": [
+      "mob/warden/tendril_clicks_1",
+      "mob/warden/tendril_clicks_2",
+      "mob/warden/tendril_clicks_3",
+      "mob/warden/tendril_clicks_4",
+      "mob/warden/tendril_clicks_5",
+      "mob/warden/tendril_clicks_6"
+    ],
+    "subtitle": "echoes.subtitle.echo_tendril_clicks"
+  }
+}

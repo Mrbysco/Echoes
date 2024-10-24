@@ -1,0 +1,16 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": {
+    "type": "neoforge:and",
+    "values": [
+      "#minecraft:is_overworld",
+      "#c:no_default_monsters"
+    ]
+  },
+  "spawners": {
+    "type": "echoes:echo_creeper",
+    "maxCount": 1,
+    "minCount": 1,
+    "weight": 10
+  }
+}
