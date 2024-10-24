@@ -4,6 +4,7 @@ import com.mrbysco.echoes.EchoesMod;
 import com.mrbysco.echoes.registry.EchoTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -18,5 +19,6 @@ public class EchoBlockTags extends BlockTagsProvider {
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		this.tag(EchoTags.ECHO_SPAWNABLE_ON).add(Blocks.SCULK);
+		this.tag(EchoTags.ECHO_CREEPER_REPLACE_ABLE).addTags(BlockTags.SCULK_REPLACEABLE);
 	}
 }

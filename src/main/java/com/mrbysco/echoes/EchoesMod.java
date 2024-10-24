@@ -2,6 +2,7 @@ package com.mrbysco.echoes;
 
 import com.mojang.logging.LogUtils;
 import com.mrbysco.echoes.client.ClientHandler;
+import com.mrbysco.echoes.handler.ExplosionHandler;
 import com.mrbysco.echoes.registry.EchoAIRegistry;
 import com.mrbysco.echoes.registry.EchoRegistry;
 import net.minecraft.resources.ResourceLocation;
@@ -9,6 +10,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 
 @Mod(EchoesMod.MOD_ID)
@@ -23,6 +25,8 @@ public class EchoesMod {
 		EchoAIRegistry.SENSOR_TYPES.register(eventBus);
 		EchoAIRegistry.MEMORY_MODULE_TYPES.register(eventBus);
 		EchoAIRegistry.ACTIVITIES.register(eventBus);
+
+		NeoForge.EVENT_BUS.addListener(ExplosionHandler::onDetonate);
 
 		eventBus.addListener(EchoRegistry::registerSpawnPlacements);
 		eventBus.addListener(EchoRegistry::registerEntityAttributes);

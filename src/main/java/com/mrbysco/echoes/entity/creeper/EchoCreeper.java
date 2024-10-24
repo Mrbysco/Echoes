@@ -233,7 +233,7 @@ public class EchoCreeper extends Echo implements PowerableMob {
 
 	private void explodeCreeper() {
 		if (!this.level().isClientSide) {
-			float f = this.isPowered() ? 2.0F : 1.0F;
+			float f = this.isPowered() ? 4.0F : 2.0F;
 			this.dead = true;
 			this.level().explode(this, this.getX(), this.getY(), this.getZ(), (float) this.explosionRadius * f, Level.ExplosionInteraction.MOB);
 			this.triggerOnDeathMobEffects(Entity.RemovalReason.KILLED);
